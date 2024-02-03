@@ -30,7 +30,6 @@ defined('MOODLE_INTERNAL') || die;
 $result array();
 
  // APIキー
-$apiKey = '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';
 
 //openAI APIエンドポイント
 $endpoint = 'https://api.openai.com/v1/chat/completions';

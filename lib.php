@@ -103,8 +103,7 @@ function txt_preprocessing($text){
 
 function gpt_txtclassification($user_text, $apiKey, $model){
     // GPTのAPIを用いて文書分類を行う
-    //$apiKey = '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';  // APIキー
-    //$apiKey = $gptapi_key;
+
     $endpoint = 'https://api.openai.com/v1/chat/completions';  // APIエンドポイント
 
     $headers = array(

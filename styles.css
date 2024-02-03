@@ -1,0 +1,204 @@
+/*初めのフォームデザイン*/
+
+.gptapi_inputarea {
+    margin-right: 30%; /* ラベルとテキストエリア間の右側のマージンを設定 */
+}
+
+
+/* チェックボックスの大きさを調整する */
+.cs_index_table {
+    float: left; /* 表を左側に配置 */
+    width: 70%; /* 表の幅を指定 */
+}
+
+.cs_index_subbtn input[type="submit"] {
+    font-size: 20px; /* フォントサイズを大きくする */
+    padding: 10px; /* パディングを追加してボタンのサイズを大きくする */
+    /* ここに他のスタイルを追加 */
+    position: absolute;
+    right: 15%;
+    margin-top: 10px;
+}
+
+.checkbox-center {
+    text-align: center; /* 水平方向の中央揃え */
+    vertical-align: middle; /* 垂直方向の中央揃え */
+}
+
+.form-check-input {
+    margin: inherit;
+    margin-top: 0.4rem;
+    transform: scale(1.5); /* 大きさを調整 */
+}
+
+/* 黒板風　2 */
+.kokuban-s2 {
+    position: relative;
+    /*margin: 2em auto;*/
+    margin: 2em 2em 2em 0em;
+    padding: 1em;
+    width: 90%; /* ボックス幅 */
+    background: #006633; /* ボックス背景色 */
+    color: #fff; /* 文章色 */
+    border: 8px solid #b2771f; /* 枠線 */
+    border-radius: 3px; /* 角の丸み */
+    box-shadow: 0 0 5px #333, 0 0 5px #555 inset;
+}
+.kokuban-s2::before,
+.kokuban-s2::after {
+position: absolute;
+content: '';
+bottom: 0;
+} 
+.kokuban-s2::before {
+width: 20px; 
+right: 10px;
+border: solid 3px #ffff00; /*チョーク（黄色）*/
+border-radius: 3px 2px 0 2px;
+}
+.kokuban-s2::after {
+width: 15px; 
+right: 45px;
+border: solid 3px #fff; /*チョーク（白） */
+border-radius: 8px 5px 2px 5px;
+}
+
+/* チェックボックスのスタイル変更 */
+.my-parts input[type='checkbox'] {
+    /* チェックボックスのサイズを大きくする */
+    width: 20px; 
+    height: 20px;
+}
+
+.my-parts label {
+    /* ラベルのフォントサイズを大きくする */
+    font-size: 16px;
+    /* ラベル間のマージンを調整する */
+    margin-right: 20px;
+}
+
+.my-parts dl {
+    width: 90%;
+	border:1px solid #e4e4e4;
+}
+
+.my-parts dl dt{
+	width: 100%;
+	padding:2% 0% 1% 2%;
+	display:inline-block;
+	vertical-align:middle;
+}
+.my-parts dl dd{
+	width: 100%;
+	padding:0% 0% 0% 2%;
+	display:inline-block;
+	vertical-align:middle;
+	border-left:1px dotted #e4e4e4;
+}
+.my-parts dl.disabled,
+.my-parts dl:disabled{
+	background:#efefef;
+	cursor:not-allowed;
+}
+
+/*絞り込みのチェックボックス*/
+
+
+/* ローディングプログレスバーのスタイル */
+.loader {
+    border: 16px solid #f3f3f3; /* 背景色 */
+    border-radius: 50%;
+    border-top: 16px solid #3498db; /* プログレスバーの色 */
+    width: 120px;
+    height: 120px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+}
+
+/* アニメーション効果 */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*========= LoadingのためのCSS ===============*/
+
+/* Loading背景画面設定　*/
+
+#splash {
+    /*fixedで全面に固定*/
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	background:#333;
+	text-align:center;
+	color:#fff;
+}
+
+/* Loadingバー中央配置　*/
+#splash_text {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+    z-index: 999;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	color: #fff;
+}
+
+/*IE11対策用バーの線の高さ※対応しなければ削除してください*/
+#splash_text svg{
+    height: 2px;
+}
+
+/* ホワイトボード風　タイトル　4 */
+.wboard-w4 {
+    position: relative;
+    /*margin: 2em auto;*/
+    padding: 1.5em 1em 1em;
+    width: 90%; /* ボックス幅 */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    background: #fff; /* ボックス背景色 */
+    font-weight: bold; /* テキスト太字 */
+    color: #000000; /* 文章色 */
+    border: 5px solid #c6c6c6; /* 枠線 */
+    border-radius: 3px; /* 角の丸み */
+    box-shadow: 0 0 8px #333, 0 0 2px #555 inset;
+}
+.wboard-w4::before,
+.wboard-w4::after {
+    position: absolute;
+    content: '';
+    width: 25px; 
+    bottom: 3px;
+    border-radius: 2px;
+    box-shadow: 1px 1px 3px #666;
+} 
+.wboard-w4::before {
+    right: 55px;
+    border: solid 3px #ff0000; /*飾ペン赤 */
+}
+.wboard-w4::after {
+    right: 20px;
+    border: solid 3px #333; /*飾ペン黒 */
+    transform: rotate(8deg); /*飾ペン角度 */
+}
+
+.title-w4 {
+    position: absolute;
+    padding: .1em .5em;
+    left: 1em;
+    top: .5em;
+    font-weight: bold;
+    font-size: 1.1em; /* 文字サイズ */
+    color: #ff4747; /* タイトル文字色 */
+    background-color: #ffffff; /* ボックス背景色 */
+    box-shadow: 1px 1px 3px #a0a0a0;
+}

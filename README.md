@@ -1,14 +1,14 @@
 # 文書分類プラグイン#
 
-このプラグインは, GPT APIを用いてmoodleにおけるコメントシートの回答内容を「質問・感想・要望・その他」のいずれかに分類するプラグインです.
+This plugin classifies the contents of comment sheets in moodle into one of "Question", "Comment", "Request" or "Other" using GPT API.
 
-利用者はまず, moodle にログイン後, コメントシートを設定しているコースにアクセスを行う. 
-その後, インデックス覧にある「レポート」を選択し, 文書分類を行うプラグイン(文書分類システムという名前) を選択する. 
-すると, コース内に設定しているコメントシートの一覧と, GPT API キーを入力するテキストボックス, モデルを選択するプルダウンメニューが表示され, 分類したいコメントシートとモデルの選択, API キーを入力することで, コメントシートの回答データが分類される. 
-この回答データをどのような流れで分類するかは, 先ほど説明した通りである.
-その後, 回答データ並びに分類ラベルが表示され, 必要に応じて表示したいラベルの絞り込みを行う流れである. 
-分類画面には, 講義名(moodle におけるセクション名にあたる), コメントシートの質問内容, 回答者のID, また複数行に渡り書いている場合, 前処理にて文書が分割されるため, 同じ人によって回答されたコメントシートだと識別するために回答者サブID を設定する. 
-最後のカラムに, コメントシートのラベルを表示させる.
+After logging in to moodle, the user accesses the course where the comment sheet has been set up. 
+Then, select "Reports" in the index list, and choose the plugin for classifying documents (named "Document Classification System"). 
+Then, a list of comment sheets in the course, a text box to input the GPT API key, and a pull-down menu to select a model are displayed. 
+
+After that, the response data and the classification labels are displayed, and the user can narrow down the labels to be displayed if necessary. 
+In the classification screen, the name of the lecture (which corresponds to the section name in moodle), the question on the comment sheet, the respondent's ID, and, in the case of a multi-line comment sheet, the respondent's subID to identify the comment sheet as having been answered by the same person, since the document is split up in the preprocessing step. 
+The label of the comment sheet is displayed in the last column.
 
 ## Installing via uploaded ZIP file ##
 

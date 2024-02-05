@@ -104,6 +104,13 @@ function txt_preprocessing($text){
 function gpt_txtclassification($user_text, $apiKey, $model){
     // GPTのAPIを用いて文書分類を行う
 
+    // 最大再試行回数を設定
+    $maxRetries = 3;
+    // 現在の再試行回数
+    $retryCount = 0;
+    // タイムアウトまでの時間（秒）
+    $timeoutSeconds = 10;
+
     $endpoint = 'https://api.openai.com/v1/chat/completions';  // APIエンドポイント
 
     $headers = array(
@@ -167,7 +174,7 @@ function gpt_txtclassification($user_text, $apiKey, $model){
     }
 
     // cURLリクエストを初期化
-    $ch = curl_init();
+    /*$ch = curl_init();
 
     // cURLオプションを設定
     curl_setopt($ch, CURLOPT_URL, $endpoint);
@@ -205,5 +212,51 @@ function gpt_txtclassification($user_text, $apiKey, $model){
     // 生成されたテキストを取得
     $result_cls = isset($result['choices'][0]['message']['content']) ? $result['choices'][0]['message']['content'] : null;
 
-    return $result_cls;
+    return $result_cls;*/
+    while ($retryCount < $maxRetries) {
+        // cURLリクエストを初期化
+        $ch = curl_init();
+        // cURLオプションを設定
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeoutSeconds);
+
+        // APIにリクエストを送信
+        $response = curl_exec($ch);
+
+        // タイムアウトまたは他のエラーをチェック
+        if (curl_errno($ch)) {
+            if (curl_errno($ch) == CURLE_OPERATION_TIMEDOUT) {
+                // タイムアウトした場合、再試行カウントを増やす
+                $retryCount++;
+                curl_close($ch);
+                continue; // 次の再試行へ
+            } else {
+                // その他のエラー
+                throw new Exception(curl_error($ch));
+            }
+        }
+
+        // 応答が成功した場合、ループを抜ける
+        curl_close($ch);
+        break;
+    }
+
+    if ($response === false) {
+        throw new Exception("API request failed after {$maxRetries} retries.");
+    }
+
+    // 応答を解析
+    $result = json_decode($response, true);
+
+    // API応答にエラーが含まれているかチェック
+    if (empty($result) || !isset($result['choices'][0]['message']['content'])) {
+        throw new Exception("Invalid response from API");
+    }
+
+    // 生成されたテキストを取得
+    return $result['choices'][0]['message']['content'];
 }

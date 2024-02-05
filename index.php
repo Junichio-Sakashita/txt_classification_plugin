@@ -157,7 +157,7 @@ if ($data = $form->get_data()) {
     //選択されたモデル名の取得
     $gptapi_model = optional_param("gpt_model", '', PARAM_TEXT);
 
-    //var_dump($gptapi_key);
+    var_dump($gptapi_key, $gptapi_model);
     foreach ($check as $key => $value) {
         if ($value !== '0') {
             $isEmpty = false;
